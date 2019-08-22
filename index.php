@@ -17,6 +17,12 @@ switch($_GET["action"]) {
         $db["pass"],
         ltrim($db["path"], "/")
     ));
+			 $sql = "SELECT * FROM tblproduct";
+		$stmt = $pdo->prepare($sql);
+		//Thiết lập kiểu dữ liệu trả về
+		$stmt->setFetchMode(PDO::FETCH_ASSOC);
+		$stmt->execute();
+		$resultSet = $stmt->fetchAll();
 			
 			if(!empty($_SESSION["cart_item"])) {
 				if(in_array($productByCode[0]["code"],array_keys($_SESSION["cart_item"]))) {
