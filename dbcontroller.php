@@ -76,7 +76,7 @@
            if ($result->execute()) {
                return true;
            } else {
-                die($result->error);
+                return $result->error;
            }
 //            $result = mysqli_query($this->conn, $query);
 //            return $result;
