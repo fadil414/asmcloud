@@ -12,6 +12,8 @@ if ($checkUser == 1) {
     header('Location: index.php');
 } else {
     $_SESSION['msg'] = 'An error occured! Please review your credentials';
-    header('Location: index.php');
+    $error = $db_handle->printError();
+    echo $error;
+//     header('Location: index.php');
 }
 ?>
