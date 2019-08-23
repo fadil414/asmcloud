@@ -7,8 +7,7 @@ $prodImg = $_FILES['prodImg']['name'];
 $temp = explode('.', $prodImg);
 $prodImg = round(microtime(true)) . '.' . end($temp);
 $prodCode = 'prod' . round(microtime(true));
-$targetDir = 'product-images/';
-$targetFile = $targetDir . $prodImg;
+$targetFile = $prodImg;
 if (move_uploaded_file($_FILES['prodImg']['tmp_name'], $targetFile)) {
     $db_handle = new DBController();
     $addProduct = $db_handle->add("INSERT INTO tblproduct SET name = :name, code = :code, image = :image, price = :price", $prodName, $prodCode, $targetFile, $prodPrice);
