@@ -15,7 +15,7 @@ if (move_uploaded_file($_FILES['prodImg']['tmp_name'], $targetFile)) {
         unset($_SESSION['msg']);
         header('Location: index.php');
     } else {
-        var_dump($addProduct);
+        echo $db_handle->printError();
     }
 } else {
     $_SESSION['msg'] = 'An error occured!';
