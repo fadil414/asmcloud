@@ -11,7 +11,7 @@ $targetFile = $prodImg;
 if (move_uploaded_file($_FILES['prodImg']['tmp_name'], $targetFile)) {
     $db_handle = new DBController();
 //    $addProduct = $db_handle->add("INSERT INTO tblproduct SET name = :name, code = :code, image = :image, price = :price", $prodName, $prodCode, $targetFile, $prodPrice);
-    $addProduct = $db_handle->add("INSERT INTO tblproduct (name, code, image, price) VALUES ('{$prodName}', '{$prodCode}', '{$targetFile}', $prodPrice)");
+    $addProduct = $db_handle->add("INSERT INTO tblproduct (name, image, code, price) VALUES ('{$prodName}', '{$targetFile}', '{$prodCode}', $prodPrice)");
     if ($addProduct) {
         unset($_SESSION['msg']);
         header('Location: index.php');
