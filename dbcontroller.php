@@ -67,16 +67,12 @@
 //		return $rowcount;	
 	}
         
-        function add($query, $name, $code, $image, $price) {
+        function add($query) {
            $result = $this->conn->prepare($query);
-           $result->bindParam(':name', $name);
-           $result->bindParam(':code', $code);
-           $result->bindParam(':image', $image);
-           $result->bindParam(':price', $price);
            if ($result->execute()) {
                return true;
            } else {
-                return $result->error;
+                die($result->error);
            }
 //            $result = mysqli_query($this->conn, $query);
 //            return $result;

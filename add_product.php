@@ -10,13 +10,13 @@ $prodCode = 'prod' . round(microtime(true));
 $targetFile = $prodImg;
 if (move_uploaded_file($_FILES['prodImg']['tmp_name'], $targetFile)) {
     $db_handle = new DBController();
-    $addProduct = $db_handle->add("INSERT INTO tblproduct SET name = :name, code = :code, image = :image, price = :price", $prodName, $prodCode, $targetFile, $prodPrice);
+//    $addProduct = $db_handle->add("INSERT INTO tblproduct SET name = :name, code = :code, image = :image, price = :price", $prodName, $prodCode, $targetFile, $prodPrice);
+    $addProduct = $db_handle->add("INSERT INTO tblproduct (name, code, image, price) VALUES ('{$prodName}', '{$prodCode}', '{$targetFile}', $prodPrice)");
     if ($addProduct) {
         unset($_SESSION['msg']);
         header('Location: index.php');
     } else {
-        echo 'error';
-        echo $db_handle->printError();
+        var_dump($addProduct);
     }
 } else {
     $_SESSION['msg'] = 'An error occured!';
